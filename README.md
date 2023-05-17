@@ -1,5 +1,5 @@
 # info_gather
-Gather Windows Info for POC. A good use case is mousejacking
+Gather Windows Info for POC. A good use case is a POC for mousejacking finding on a pentest report.
 
 Run the server and any port using:
 
